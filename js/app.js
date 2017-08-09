@@ -45,7 +45,20 @@ function getMoreData(eventId) {
 		console.log('I am here' + response);
 		return response.json();
 
-	})
+	}).then(function(moreData) {
+		console.log(moreData);
+		var latlong=moreData.sport_event_conditions.venue.map_coordinates.split(',');
+		venues.push({
+			name: moreData.sport_event_conditions.venue.name,
+			city: moreData.sport_event_conditions.venue.city_name,
+			country: moreData.sport_event_conditions.venue.country_name,
+			lat: latlong[0],
+			lng: latlong[1]
+		});
+		
+		// console.log(venue);
+		return ;
+	});
 }
 
 
@@ -82,25 +95,12 @@ function fetchData() {
 	return Promise.all (
  		mydates.map(function(date) {
  			console.log(date.id);
- 			getMoreData(date.id).then(function(moreData) {
-		console.log(moreData);
-		var latlong=moreData.sport_event_conditions.venue.map_coordinates.split(',');
-		return {
-			name: moreData.sport_event_conditions.venue.name,
-			city: moreData.sport_event_conditions.venue.city_name,
-			country: moreData.sport_event_conditions.venue.country_name,
-			lat: latlong[0],
-			lng: latlong[1]
-		};
-		
-		// console.log(venue);
-		// return venues;
-	});
+ 			getMoreData(date.id)
  		})
- 		).then(function(venues) {
+ 		)
+}).then(function(venues) {
 	console.log(venues);
 });
-})
 }
 // fetchData();
 data = [
