@@ -1,18 +1,34 @@
-var myHeaders = new Headers();
-
-var myInit = { method: 'GET',
-               headers: myHeaders
-             };
-
-var myRequest = new Request('https://api.sportradar.us/soccer-t3/intl/en/tournaments/sr:tournament:477/results.json?api_key=4k6cumz6ek9a5zehvqen7v66', myInit);
-
-fetch(myRequest).then(function(response) {
-  return response.blob();
-}).then(function(myBlob) {
-  // var objectURL = URL.createObjectURL(myBlob);
-  // myImage.src = objectURL;
-  console.log(myBlob);
+function getMoreData(eventId) {
+	var request = 'https://api.sportradar.us/soccer-t3/intl/en/matches/'+eventId+'/summary.json?api_key=4k6cumz6ek9a5zehvqen7v66';
+	fetch(request,{method: 'GET'}).then(function(response) {
+		return response.json();
+	}).then(function(moreData) {
+		console.log(moreData);
+		fetch()
+	})
+}
+var dates = [];
+fetch('https://api.sportradar.us/soccer-t3/intl/en/tournaments/sr:tournament:477/results.json?api_key=4k6cumz6ek9a5zehvqen7v66',{method:'GET'}).then(function(response) {
+  return response.json();
+}).then(function(mydata) {
+	var results = mydata.results;
+	var obj = {};
+  // console.log(results);
+  
+  results.forEach(function(result) {
+  	this.obj = {
+  		id: result.sport_event.id,
+  		date: result.sport_event.scheduled.slice(0,10),
+  		time: result.sport_event.scheduled.slice(11,16)
+  	}
+  	dates.push(this.obj);
+  })
+  console.log(dates);
+  
+  fetch()
+  getMoreData(dates[0].id);
 });
+
 data = [
 	{
 		header: "221b Baker St.",
