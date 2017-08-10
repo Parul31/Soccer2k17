@@ -221,7 +221,7 @@ function displayInfo(currentSportsData) {
 		if(competitor.id == currentSportsData.winner_id) {
 			$('#winner').text(" "+competitor.name+"("+competitor.country_code+")");
 		}
-	})
+	});
 }
 function initialDate(data) {
 	document.getElementById('date').textContent = data[0].date;
@@ -237,7 +237,7 @@ function filterBy(sportsdata) {
         document.getElementById('date').textContent = sportsdata[this_date].date;
         console.log(sportsdata[this_date].venue);
         map.setView([sportsdata[this_date].venue.lat,sportsdata[this_date].venue.lng],17);
-        popUp(sportsdata[this_date].venue.lat,sportsdata[this_date].venue.lng,sportsdata[this_date])
+        popUp(sportsdata[this_date].venue.lat,sportsdata[this_date].venue.lng,sportsdata[this_date]);
 		displayInfo(sportsdata[this_date]);
     });
 }
@@ -247,8 +247,8 @@ var viewModel = function() {
 	self.soccerData = ko.observableArray([]);
 	initialData.forEach(function(data) {
     	self.soccerData.push(data);
-    })
+    });
     console.log(self.soccerData());
     filterBy(self.soccerData());
-}
+};
 ko.applyBindings(new viewModel());
