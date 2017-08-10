@@ -6,8 +6,11 @@
 	width:100%; 
 	height: 700px;
 }
-#sections {
-	/*position: relative;*/
+#date {
+	font-size: 18px;
+}
+/*#sections {
+	
 	overflow: auto;
 	width: 33.33%;
 	height: 700px;
@@ -20,7 +23,7 @@
     background-color: #fafafa;
 }
 */
-section {
+/*section {
 	padding: 2%;
     line-height: 25px;
     text-align: justify;
@@ -45,17 +48,13 @@ section:last-child {
     }
     section {
     	display: inline-block;
-        /*-webkit-flex: 1; 
-	    -ms-flex: 1;     
-	    flex: 1 auto;*/
+        
 	    width: 100%;
     }
     body { 
-	overflow: auto;
-	/*margin:0; 
-	padding:0;*/ 
+	overflow: auto; 
 	}
-}
+}*/
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     position: absolute;
@@ -69,7 +68,7 @@ section:last-child {
 
 .map-overlay .map-overlay-inner {
     /*background-color: #fff;*/
-    opacity: 0.9;
+    opacity: 0.8;
     filter: alpha(opacity=30); /* For IE8 and earlier */
     box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
     border-radius: 3px;
