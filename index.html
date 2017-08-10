@@ -14,6 +14,24 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+  <header>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            European Ch.ship Women 2017
+          </a> 
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="desc-div" class="col-md-12 text-center">
+        <large>Welcome to this page. Feel free to explore about European Ch.ship Women 2017. You can change the date in the slider given on the top-left corner of the map and you will see the information of the event held on that particular day.</large> 
+      </div>
+    </div>
+  </div> 
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -23,19 +41,45 @@
               <h2>Soccer Tournament in 2017</h2>
               <label id='date'></label>
               <input id='slider' type='range' min='0' max='4' step='1' value='0'/>
-
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h4 id="display-heading"></h4>
-        <p id="display-desc"></p>
-      </div>
-    </div> 
   </div>
-  
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="row">
+              <div class="alert alert-info">
+                <p id="display-heading"></p>
+                <p id="display-desc"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <p><img id="country1" src=""></p>
+                <p id="country1-name"></p>
+              </div>
+              <div id="versus" class="col-md-2">
+                <p><img src="img/versus.png" width="100px" height="100px"></p>
+              </div>
+              <div class="col-md-5">
+                <p><img id="country2" src=""></p>
+                <p id="country2-name"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="alert alert-success" role="alert">
+                  <p>Winning Team:<span id="winner"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div> 
+    </div>  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

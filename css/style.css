@@ -1,5 +1,12 @@
 body {
-	font-size: 24px;
+	font-size: 26px;
+}
+#desc-div {
+	padding: 2%;
+}
+#versus {
+	margin-top: 3%;
+	padding: 1%;
 }
 #map { 
 	/*position:fixed;*/ 
@@ -11,6 +18,23 @@ body {
 }
 #date {
 	font-size: 18px;
+}
+#country1, #country2 {
+	max-width: 220px;
+	max-height: 200px;
+}
+.navbar-header {
+	float: left;
+	padding: 15px;
+	text-align: center;
+	width: 100%;
+}
+.navbar .navbar-brand {
+	color: white;
+	font-size: 26px;
+}
+.navbar-brand {
+	float: none;
 }
 .leaflet-popup-content {
 	width: 200px;

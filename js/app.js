@@ -11,7 +11,28 @@ var initialData = [
 	        "lat": "52.236667",
 	        "lng":"6.837500",
 	        "country_code": "NLD"
-	    }
+	    },
+	    "competitors": [
+            {
+                "id": "sr:competitor:32484",
+                "name": "Netherlands",
+                "country": "Netherlands",
+                "country_code": "NLD",
+                "abbreviation": "NED",
+                "flag": "img/netherlands.svg",
+                "qualifier": "home"
+            },
+            {
+                "id": "sr:competitor:7414",
+                "name": "Denmark",
+                "country": "Denmark",
+                "country_code": "DNK",
+                "abbreviation": "DEN",
+                "flag": "img/denmark.svg",
+                "qualifier": "away"
+            }
+        ],
+        "winner_id": "sr:competitor:32484"
 	},
 	{
 		date:"2017-08-03",
@@ -25,7 +46,28 @@ var initialData = [
 			"lat": "52.236667",
 	        "lng":"6.837500",
 			"country_code":"NLD"	
-		}
+		},
+		"competitors": [
+            {
+                "id": "sr:competitor:32484",
+                "name": "Netherlands",
+                "country": "Netherlands",
+                "country_code": "NLD",
+                "abbreviation": "NED",
+                "flag": "img/netherlands.svg",
+                "qualifier": "home"
+            },
+            {
+                "id": "sr:competitor:7415",
+                "name": "England",
+                "country": "England",
+                "country_code": "ENG",
+                "abbreviation": "ENG",
+                "flag": "img/england.png",
+                "qualifier": "away"
+            }
+        ],
+        "winner_id": "sr:competitor:32484"
 	},
 	{
 		date:"2017-08-03",
@@ -39,7 +81,28 @@ var initialData = [
 			"lat": "51.595556",
 	        "lng":"4.750278",
 			"country_code":"NLD"
-		}
+		},
+		"competitors": [
+            {
+                "id": "sr:competitor:7414",
+                "name": "Denmark",
+                "country": "Denmark",
+                "country_code": "DNK",
+                "abbreviation": "DEN",
+                "flag": "img/denmark.svg",
+                "qualifier": "home"
+            },
+            {
+                "id": "sr:competitor:34014",
+                "name": "Austria",
+                "country": "Austria",
+                "country_code": "AUT",
+                "abbreviation": "AUT",
+                "flag": "img/austria.svg",
+                "qualifier": "away"
+            }
+        ],
+        "winner_id": "sr:competitor:7414"
 	},
 	{
 		date:"2017-07-30",
@@ -53,7 +116,28 @@ var initialData = [
 			"lat": "52.260416",
 	        "lng":"6.172578",
 			"country_code":"NLD"
-		}
+		},
+		"competitors": [
+            {
+                "id": "sr:competitor:7415",
+                "name": "England",
+                "country": "England",
+                "country_code": "ENG",
+                "abbreviation": "ENG",
+                "flag": "img/england.png",
+                "qualifier": "home"
+            },
+            {
+                "id": "sr:competitor:32485",
+                "name": "France",
+                "country": "France",
+                "country_code": "FRA",
+                "abbreviation": "FRA",
+                "flag": "img/france.svg",
+                "qualifier": "away"
+            }
+        ],
+        "winner_id": "sr:competitor:7415"
 	},
 	{
 		date:"2017-07-30",
@@ -67,7 +151,28 @@ var initialData = [
 			"lat": "51.542778",
 	        "lng":"5.066944",
 			"country_code":"NLD"
-		}
+		},
+		"competitors": [
+            {
+                "id": "sr:competitor:34014",
+                "name": "Austria",
+                "country": "Austria",
+                "country_code": "AUT",
+                "abbreviation": "AUT",
+                "flag": "img/austria.svg",
+                "qualifier": "home"
+            },
+            {
+                "id": "sr:competitor:37371",
+                "name": "Spain",
+                "country": "Spain",
+                "country_code": "ESP",
+                "abbreviation": "ESP",
+                "flag": "img/spain.svg",
+                "qualifier": "away"
+            }
+        ],
+        "winner_id": "sr:competitor:34014"
 	}
 
 ];
@@ -120,8 +225,17 @@ map.on('click', function(e) {
 function displayInfo(currentSportsData) {
 	var heading = currentSportsData.date+" @"+currentSportsData.time;
 	var desc = currentSportsData.venue.name;
-	$('#display-heading').text(heading);
-	$('#display-desc').text(desc);
+	$('#display-heading').text("The event took place on "+heading);
+	$('#display-desc').text("The event took place in "+currentSportsData.venue.country_name+" in the city "+currentSportsData.venue.city_name+" at "+desc);
+	$('#country1').attr('src',currentSportsData.competitors[0].flag);
+	$('#country2').attr('src',currentSportsData.competitors[1].flag);
+	$('#country1-name').text(currentSportsData.competitors[0].name);
+	$('#country2-name').text(currentSportsData.competitors[1].name);
+	currentSportsData.competitors.forEach(function(competitor) {
+		if(competitor.id == currentSportsData.winner_id) {
+			$('#winner').text(" "+competitor.name+"("+competitor.country_code+")");
+		}
+	})
 }
 function initialDate(data) {
 	document.getElementById('date').textContent = data[0].date;
