@@ -1,6 +1,9 @@
-
+body {
+	font-size: 24px;
+}
 #map { 
 	/*position:fixed;*/ 
+	
 	top:0; 
 	bottom:0; 
 	width:100%; 
@@ -9,52 +12,12 @@
 #date {
 	font-size: 18px;
 }
-/*#sections {
-	
-	overflow: auto;
-	width: 33.33%;
-	height: 700px;
+.leaflet-popup-content {
+	width: 200px;
 }
-/*#features {
-    width: 50%;
-    margin-left: 50%;
-    font-family: sans-serif;
-    overflow-y: scroll;
-    background-color: #fafafa;
+.leaflet-popup-content h3 {
+	font-size: 20px;
 }
-*/
-/*section {
-	padding: 2%;
-    line-height: 25px;
-    text-align: justify;
-    border-bottom: 1px solid #ddd;
-    opacity: 0.25;
-    font-size: 22px;
-    width: 100%;
-    height: 100%; 
-}
-section.active {
-    opacity: 1;
-}
-section:last-child {
-    border-bottom: none;
-    margin-bottom: 200px;
-}
-@media only screen and (max-width: 768px) {
-    #sections {
-    	
-    	width: 100%;
-    	overflow-x: auto;
-    }
-    section {
-    	display: inline-block;
-        
-	    width: 100%;
-    }
-    body { 
-	overflow: auto; 
-	}
-}*/
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     position: absolute;
@@ -63,12 +26,13 @@ section:last-child {
     left: 0;
     padding: 10px;
     margin: 2%;
-    color: white;
+    margin-left: 5%;
+    color: black;
 }
 
 .map-overlay .map-overlay-inner {
     /*background-color: #fff;*/
-    opacity: 0.8;
+    opacity: 0.7;
     filter: alpha(opacity=30); /* For IE8 and earlier */
     box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
     border-radius: 3px;
@@ -81,13 +45,6 @@ section:last-child {
     display: block;
     margin: 0 0 10px;
 }
-
-/*.map-overlay .legend .bar {
-    height: 10px;
-    width: 100%;
-    background: linear-gradient(to right, #FCA107, #7F3121);
-}
-*/
 .map-overlay input {
     background-color: transparent;
     display: inline-block;
