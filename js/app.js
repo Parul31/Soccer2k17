@@ -192,17 +192,17 @@ function initMap() {
 }
 initMap();
 function popUp(lat,lng,sportsdata) {
-map.on('click', function(e) {
-	var this_lat=Math.floor(lat*10000)/10000;
-	var this_lng=Math.floor(lng*10000)/10000;
-    var latitude = Math.floor(e.latlng.lat*10000)/10000;
-    var longitude = Math.floor(e.latlng.lng*10000)/10000;
+map.on("click", function(e) {
+	var this_lat=Math.floor(lat*1000)/1000;
+	var this_lng=Math.floor(lng*1000)/1000;
+    var latitude = Math.floor(e.latlng.lat*1000)/1000;
+    var longitude = Math.floor(e.latlng.lng*1000)/1000;
     console.log(this_lat + " - " + this_lng);
     console.log(latitude + " - " + longitude);
     if((this_lat==latitude) && (this_lng==longitude)) {
 		console.log('insideif');
 		popup = L.popup()
-        .setLatLng([this_lat,this_lng])
+        .setLatLng([lat,lng])
         .setContent("<h3>"+sportsdata.venue.name+"</h3>")
         .openOn(map);
 	}
