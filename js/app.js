@@ -181,7 +181,7 @@ var marker;
 var popup ;
 //initialize the map using accessToken
 function initMap() {
-	L.mapbox.accessToken = 'pk.eyJ1IjoicGFydWwzMSIsImEiOiJjajYxemtxcDAweXVuMnFuejlwMXp5OXJ2In0.Ur-gLsJ8I1IgDQGNhSWRsg';
+	L.mapbox.accessToken = 'your accessToken';
 	map = L.mapbox.map('map')
 		.setView([52.236667,6.837500],17);
 	popup = L.popup()
@@ -189,7 +189,7 @@ function initMap() {
         .setContent("<h3>Grolsch Veste Stadium</h3>")
         .openOn(map);
 	// Use styleLayer to add a Mapbox style created in Mapbox Studio
-	L.mapbox.styleLayer('mapbox://styles/parul31/cj66ev2y377av2sn4uy2t6pk1').addTo(map);
+	L.mapbox.styleLayer('your style').addTo(map);
 }
 initMap();
 //to display the popup wheneven the marker is clicked
