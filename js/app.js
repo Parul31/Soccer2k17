@@ -179,6 +179,7 @@ var initialData = [
 var map;
 var marker;
 var popup ;
+//initialize the map using accessToken
 function initMap() {
 	L.mapbox.accessToken = 'pk.eyJ1IjoicGFydWwzMSIsImEiOiJjajYxemtxcDAweXVuMnFuejlwMXp5OXJ2In0.Ur-gLsJ8I1IgDQGNhSWRsg';
 	map = L.mapbox.map('map')
@@ -191,6 +192,7 @@ function initMap() {
 	L.mapbox.styleLayer('mapbox://styles/parul31/cj66ev2y377av2sn4uy2t6pk1').addTo(map);
 }
 initMap();
+//to display the popup wheneven the marker is clicked
 function popUp(lat,lng,sportsdata) {
 map.on("click", function(e) {
 	var this_lat=Math.floor(lat*1000)/1000;
@@ -208,6 +210,7 @@ map.on("click", function(e) {
 	}
   });
 }
+//display information about the event
 function displayInfo(currentSportsData) {
 	var heading = currentSportsData.date+" @"+currentSportsData.time;
 	var desc = currentSportsData.venue.name;
@@ -227,10 +230,10 @@ function initialDate(data) {
 	document.getElementById('date').textContent = data[0].date;
 	displayInfo(data[0]);
 }
+//to set the view of the map according to selected date on the slider
 function filterBy(sportsdata) {
-    initialDate(sportsdata);
+    initialDate(sportsdata); //to fill display the information when the page is loaded
     document.getElementById('slider').addEventListener('input', function(e) {
-  	
         var this_date = parseInt(e.target.value, 10);
         var this_id = sportsdata[this_date].id;
         console.log(this_id);
@@ -241,6 +244,7 @@ function filterBy(sportsdata) {
 		displayInfo(sportsdata[this_date]);
     });
 }
+//the viewmodel
 var viewModel = function() {
 	var self = this;
 	self.venues = ko.observableArray([]);
