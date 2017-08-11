@@ -179,7 +179,6 @@ var initialData = [
 var map;
 var marker;
 var popup ;
-//initialize the map using accessToken
 function initMap() {
 	L.mapbox.accessToken = 'your accessToken';
 	map = L.mapbox.map('map')
@@ -189,20 +188,16 @@ function initMap() {
         .setContent("<h3>Grolsch Veste Stadium</h3>")
         .openOn(map);
 	// Use styleLayer to add a Mapbox style created in Mapbox Studio
-	L.mapbox.styleLayer('your style').addTo(map);
+	L.mapbox.styleLayer('your styleLayer').addTo(map);
 }
 initMap();
-//to display the popup wheneven the marker is clicked
 function popUp(lat,lng,sportsdata) {
 map.on("click", function(e) {
 	var this_lat=Math.floor(lat*1000)/1000;
 	var this_lng=Math.floor(lng*1000)/1000;
     var latitude = Math.floor(e.latlng.lat*1000)/1000;
     var longitude = Math.floor(e.latlng.lng*1000)/1000;
-    console.log(this_lat + " - " + this_lng);
-    console.log(latitude + " - " + longitude);
     if((this_lat==latitude) && (this_lng==longitude)) {
-		console.log('insideif');
 		popup = L.popup()
         .setLatLng([lat,lng])
         .setContent("<h3>"+sportsdata.venue.name+"</h3>")
@@ -210,7 +205,6 @@ map.on("click", function(e) {
 	}
   });
 }
-//display information about the event
 function displayInfo(currentSportsData) {
 	var heading = currentSportsData.date+" @"+currentSportsData.time;
 	var desc = currentSportsData.venue.name;
@@ -230,21 +224,17 @@ function initialDate(data) {
 	document.getElementById('date').textContent = data[0].date;
 	displayInfo(data[0]);
 }
-//to set the view of the map according to selected date on the slider
 function filterBy(sportsdata) {
-    initialDate(sportsdata); //to fill display the information when the page is loaded
+    initialDate(sportsdata);
     document.getElementById('slider').addEventListener('input', function(e) {
         var this_date = parseInt(e.target.value, 10);
         var this_id = sportsdata[this_date].id;
-        console.log(this_id);
         document.getElementById('date').textContent = sportsdata[this_date].date;
-        console.log(sportsdata[this_date].venue);
         map.setView([sportsdata[this_date].venue.lat,sportsdata[this_date].venue.lng],17);
         popUp(sportsdata[this_date].venue.lat,sportsdata[this_date].venue.lng,sportsdata[this_date]);
 		displayInfo(sportsdata[this_date]);
     });
 }
-//the viewmodel
 var viewModel = function() {
 	var self = this;
 	self.venues = ko.observableArray([]);
@@ -252,7 +242,6 @@ var viewModel = function() {
 	initialData.forEach(function(data) {
     	self.soccerData.push(data);
     });
-    console.log(self.soccerData());
     filterBy(self.soccerData());
 };
 ko.applyBindings(new viewModel());
